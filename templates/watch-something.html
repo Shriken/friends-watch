@@ -1,0 +1,14 @@
+<html>
+<head>
+</head>
+<body>
+  <a href='/'>home</a><br>
+  <br>
+  You should watch one of these:<br>
+  {% for thing_to_watch in media %}
+    {{thing_to_watch['name']}}<br>
+    {{thing_to_watch['length']}}<br>
+    <br>
+  {% endfor %}
+</body>
+</html>

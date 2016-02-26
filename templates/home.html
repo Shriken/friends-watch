@@ -15,15 +15,16 @@
     {% endfor %}
   {% endwith %}
 
-  <form method='POST'>
-    add a thing to watch<br>
-    <input type='hidden' name='submit-type' value='add-media'/>
-    <input type='text' name='media-name' placeholder='name'/><br>
+  <form action='watch-something'>
+    watch something<br>
     <input
       type='number'
-      name='media-length'
-      placeholder='length in minutes'
+      step='1'
+      name='time-to-watch'
+      placeholder='free time in minutes'
     /><br>
+
+    who's here?<br>
     {% for person in people %}
       <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
       {{person['name']}}
@@ -33,9 +34,28 @@
   </form>
   <br>
 
-  <form method='POST'>
+  <form action='action/add-media'>
+    add a thing to watch<br>
+    <input type='text' name='media-name' placeholder='name'/><br>
+    <input
+      type='number'
+      step='1'
+      name='media-length'
+      placeholder='length in minutes'
+    /><br>
+
+    who wants to see it?<br>
+    {% for person in people %}
+      <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
+      {{person['name']}}
+      <br>
+    {% endfor %}
+    <input type='submit'/>
+  </form>
+  <br>
+
+  <form action='action/add-person'>
     add a person<br>
-    <input type='hidden' name='submit-type' value='add-person'/>
     <input type='text' name='person-name'/><br>
     <input type='submit'/>
   </form>

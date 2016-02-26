@@ -22,7 +22,7 @@ def get_people():
     return [person for person in cursor]
 
 def add_media(media_name, media_length, people):
-    if get_media(media_name):
+    if get_media_by_name(media_name):
         return 'media "%s" already exists' % media_name
 
     db.media.insert({
@@ -32,7 +32,14 @@ def add_media(media_name, media_length, people):
     })
     return True
 
-def get_media(media_name):
+def get_media(media_length, people):
+    cursor = db.media.find({
+        'length': {'$lte': media_length},
+        'want-to-watch': {'$all': people}
+    })
+    return [x for x in cursor]
+
+def get_media_by_name(media_name):
     cursor = db.media.find({'name': media_name})
     try:
         return cursor[0]
