@@ -1,0 +1,21 @@
+form {
+	display: inline-block;
+	background: lightgrey;
+	padding: 5px 10px 5px 10px;
+}
+
+.flashes {
+	display: inline-block;
+	background: lightgrey;
+	padding: 5px 10px 5px 10px;
+}
+
+.flash-error {
+	background: red;
+	color: white;
+}
+
+.flash-success {
+	background: green;
+	color: white;
+}

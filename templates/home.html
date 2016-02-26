@@ -1,0 +1,38 @@
+<html>
+<head>
+  <link
+    rel='stylesheet'
+    type='text/css'
+    href='{{url_for('static', filename='css/home.css')}}'
+  />
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <ul class='flashes'>
+        <li class='flash-{{category}}'>{{message}}</li>
+      </ul><br>
+    {% endfor %}
+  {% endwith %}
+
+  <form method='POST'>
+    add a thing to watch<br>
+    <input type='hidden' name='submit-type' value='add-media'/>
+    <input type='text' name='media-name'/><br>
+    {% for person in people %}
+      <input type='checkbox' name='wants-to-watch:{{person}}'/>
+      {{person['name']}}
+      <br>
+    {% endfor %}
+    <input type='submit'/>
+  </form>
+  <br>
+
+  <form method='POST'>
+    add a person<br>
+    <input type='hidden' name='submit-type' value='add-person'/>
+    <input type='text' name='person-name'/><br>
+    <input type='submit'/>
+  </form>
+</body>
+</html>
