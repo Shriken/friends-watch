@@ -18,9 +18,14 @@
   <form method='POST'>
     add a thing to watch<br>
     <input type='hidden' name='submit-type' value='add-media'/>
-    <input type='text' name='media-name'/><br>
+    <input type='text' name='media-name' placeholder='name'/><br>
+    <input
+      type='number'
+      name='media-length'
+      placeholder='length in minutes'
+    /><br>
     {% for person in people %}
-      <input type='checkbox' name='wants-to-watch:{{person}}'/>
+      <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
       {{person['name']}}
       <br>
     {% endfor %}
