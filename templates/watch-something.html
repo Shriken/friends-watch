@@ -1,14 +1,16 @@
-<html>
-<head>
-</head>
-<body>
+{% extends 'layout.html' %}
+{% block body %}
   <a href='/'>home</a><br>
   <br>
   You should watch one of these:<br>
   {% for thing_to_watch in media %}
-    {{thing_to_watch['name']}}<br>
-    {{thing_to_watch['length']}}<br>
+    <div class='well'>
+      <b>{{thing_to_watch['name']}}</b><br>
+      {{thing_to_watch['length']}} minutes<br>
+      {% for person in thing_to_watch['want-to-watch'] %}
+        {{person}}<br>
+      {% endfor %}
+    </div>
     <br>
   {% endfor %}
-</body>
-</html>
+{% endblock %}
