@@ -9,48 +9,55 @@
     {% endfor %}
   {% endwith %}
 
-  <form action='watch-something'>
-    watch something<br>
-    <input
-      type='number'
-      step='1'
-      name='time-to-watch'
-      placeholder='free time in minutes'
-    /><br>
+  <div class='well'>
+    <form action='watch-something'>
+      watch something<br>
+      <input
+        type='number'
+        step='1'
+        name='time-to-watch'
+        placeholder='free time in minutes'
+      /><br>
 
-    who's here?<br>
-    {% for person in people %}
-      <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
-      {{person['name']}}
-      <br>
-    {% endfor %}
-    <input type='submit'/>
-  </form>
+      who's here?<br>
+      {% for person in people %}
+        <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
+        {{person['name']}}
+        <br>
+      {% endfor %}
+      <input type='submit'/>
+    </form>
+  </div>
+  <br><br>
+
+  <div class='well'>
+    <form action='action/add-media'>
+      add a thing to watch<br>
+      <input type='text' name='media-name' placeholder='name'/><br>
+      <input
+        type='number'
+        step='1'
+        name='media-length'
+        placeholder='length in minutes'
+      /><br>
+
+      who wants to see it?<br>
+      {% for person in people %}
+        <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
+        {{person['name']}}
+        <br>
+      {% endfor %}
+      <input type='submit'/>
+    </form>
+  </div>
+  <br>
   <br>
 
-  <form action='action/add-media'>
-    add a thing to watch<br>
-    <input type='text' name='media-name' placeholder='name'/><br>
-    <input
-      type='number'
-      step='1'
-      name='media-length'
-      placeholder='length in minutes'
-    /><br>
-
-    who wants to see it?<br>
-    {% for person in people %}
-      <input type='checkbox' name='wants-to-watch:{{person['name']}}'/>
-      {{person['name']}}
-      <br>
-    {% endfor %}
-    <input type='submit'/>
-  </form>
-  <br>
-
-  <form action='action/add-person'>
-    add a person<br>
-    <input type='text' name='person-name'/><br>
-    <input type='submit'/>
-  </form>
+  <div class='well'>
+    <form action='action/add-person'>
+      add a person<br>
+      <input type='text' name='person-name'/><br>
+      <input type='submit'/>
+    </form>
+  </div>
 {% endblock %}
